@@ -1,0 +1,362 @@
+{
+  "season": "2026-07",
+  "format": "double round robin",
+  "groups": {
+    "A": [
+      {
+        "name": "Cavaliers16",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "3nasty",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Myrmigi",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "rizeagain",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "KES",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "B1": [
+      {
+        "name": "RoXar",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "antoinelr",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Jewdoka",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "FifthBeetle",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "RiccDawg",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "B2": [
+      {
+        "name": "Kaur50",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "hive2",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Czege",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "veme",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "csigeee",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "C1": [
+      {
+        "name": "HiveSpider",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "eSedano",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "dodger",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "shturik",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Bee-ryce",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "C2": [
+      {
+        "name": "Frasco",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "mangouste",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "radru",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "max_shark",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "LeDoryphore",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "C3": [
+      {
+        "name": "Yeku",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Grajjio",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "DimerHunton",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "eddiesc03",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "circustumbler",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "C4": [
+      {
+        "name": "Nicolai",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "andreuenc",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "pcapella",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "I_am_a_Shark",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Bunjaboy",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "D1": [
+      {
+        "name": "xDESCAx",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Roman575",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "dextramos",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "boroczb",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "cpd-spider",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "D2": [
+      {
+        "name": "Marchewka",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "neighlles",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "royalit",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "colmenaro",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ],
+    "D3": [
+      {
+        "name": "mawel",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "thellwar",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "Sharpy29",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      {
+        "name": "MartinusTheCat",
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    ]
+  }
+}
