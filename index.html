@@ -14,6 +14,10 @@
     --gold: #C99A2E;
     --gold-soft: #E8CE8E;
     --brown: #6B4226;
+    --promote: #4C7A63;
+    --promote-soft: #DCE9E1;
+    --relegate: #9C4B3A;
+    --relegate-soft: #F0DCD6;
     --line: #d8cdb4;
     --radius: 10px;
   }
@@ -33,7 +37,7 @@
   /* ---------- Header ---------- */
   header.hero {
     position: relative;
-    padding: 64px 24px 48px;
+    padding: 64px 24px 40px;
     background:
       radial-gradient(circle at 15% 20%, rgba(201,154,46,0.12), transparent 45%),
       var(--bg-alt);
@@ -80,21 +84,14 @@
     font-family: "Archivo Black", "Arial Black", sans-serif;
     font-size: clamp(34px, 6vw, 58px);
     line-height: 1.02;
-    margin: 0 0 10px;
+    margin: 0 0 22px;
     letter-spacing: -0.01em;
   }
 
   h1 .of { color: var(--brown); }
   h1 .hive { color: var(--gold); }
 
-  .hero-sub {
-    max-width: 560px;
-    color: var(--ink-soft);
-    font-size: 16px;
-  }
-
   .legend {
-    margin-top: 28px;
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
@@ -103,7 +100,11 @@
     color: var(--ink-soft);
   }
   .legend span { display: flex; align-items: center; gap: 6px; }
-  .swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .swatch {
+    width: 12px; height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+  }
 
   /* ---------- Layout ---------- */
   main {
@@ -111,6 +112,32 @@
     margin: 0 auto;
     padding: 40px 24px 80px;
   }
+
+  /* ---------- Rules panel ---------- */
+  .rules-panel {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 24px 22px;
+    margin-bottom: 32px;
+  }
+
+  .rules-panel h2 {
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: 16px;
+    margin: 0 0 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .rules-panel ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .rules-panel li { margin-bottom: 6px; }
+  .rules-panel li:last-child { margin-bottom: 0; }
+  .rules-panel strong { color: var(--ink); }
 
   .board {
     display: grid;
@@ -197,65 +224,20 @@
     color: var(--ink);
   }
 
-  tr.unplayed td { color: var(--ink-soft); font-style: italic; }
-
-  /* ---------- Fixtures ---------- */
-  .fixtures {
-    padding: 14px 18px 18px;
-    border-top: 1px solid var(--line);
-  }
-
-  .fixtures h4 {
-    margin: 0 0 10px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
-
-  .fixture-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 6px 0;
-    font-size: 13.5px;
-    border-bottom: 1px dashed var(--line);
-  }
-  .fixture-row:last-child { border-bottom: none; }
-
-  .fixture-names { flex: 1; min-width: 0; }
-  .fixture-names .winner { font-weight: 700; }
-
-  .fixture-score {
+  .tag {
+    display: inline-block;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 13px;
-    color: var(--brown);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    padding: 2px 7px;
+    border-radius: 20px;
     white-space: nowrap;
   }
+  .tag.promote { background: var(--promote-soft); color: var(--promote); }
+  .tag.relegate { background: var(--relegate-soft); color: var(--relegate); }
+  .tag.king { background: var(--gold-soft); color: var(--brown); }
 
-  .fixture-score.pending {
-    color: var(--ink-soft);
-    font-style: italic;
-  }
-
-  /* ---------- Footer ---------- */
-  footer {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
-    color: var(--ink-soft);
-    font-size: 13px;
-  }
-
-  footer code {
-    background: var(--bg-alt);
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-family: "IBM Plex Mono", monospace;
-  }
-
+  /* ---------- Status ---------- */
   .status-banner {
     max-width: 1180px;
     margin: 20px auto 0;
@@ -269,10 +251,6 @@
     outline: 2px solid var(--brown);
     outline-offset: 2px;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { scroll-behavior: auto !important; }
-  }
 </style>
 </head>
 <body>
@@ -280,13 +258,12 @@
 <header class="hero">
   <div class="hex-field"></div>
   <div class="hero-inner">
-    <div class="eyebrow"><span class="hex-dot"></span> Group stage · Season 2026-07</div>
+    <div class="eyebrow"><span class="hex-dot"></span> Season 2026-07</div>
     <h1>King <span class="of">of the</span> <span class="hive">Hive</span></h1>
-    <p class="hero-sub">Ten groups, one round-robin each. Surround the queen, take the match — standings update automatically as results come in.</p>
     <div class="legend">
       <span><span class="swatch" style="background:var(--gold)"></span> Group leader</span>
-      <span><span class="swatch" style="background:var(--ivory);border:1px solid var(--line)"></span> Played</span>
-      <span><span class="swatch" style="background:var(--bg-alt);border:1px solid var(--line)"></span> Pending</span>
+      <span><span class="swatch" style="background:var(--promote)"></span> Promoted</span>
+      <span><span class="swatch" style="background:var(--relegate)"></span> Relegated</span>
     </div>
   </div>
 </header>
@@ -294,16 +271,50 @@
 <div class="status-banner" id="status">Loading groups…</div>
 
 <main>
+  <section class="rules-panel">
+    <h2>Promotion &amp; relegation</h2>
+    <ol>
+      <li>The winner of each group is promoted to a higher group, except the topmost one — <strong>Group A's winner becomes King of the Hive</strong> for the season.</li>
+      <li>The bottom two finishers of Groups A, B1 and B2 are relegated to lower groups.</li>
+      <li>To keep players moving through the lower half of the pyramid, Groups C1–C4 and D1–D3 each send their <strong>top two up</strong>, and Groups C1–C4 also send their <strong>bottom two down</strong>. Group D is the bottom level, so nobody is relegated out of it.</li>
+      <li>Next season, players are reshuffled between groups on the same level so nobody repeats the same opponents.</li>
+    </ol>
+  </section>
+
   <div class="board" id="board"></div>
 </main>
 
-<footer>
-  Results are read from <code>2026-07.json</code>. To record a match, edit that file's
-  <code>matches</code> array and set <code>score1</code> / <code>score2</code> to the games each player won
-  (e.g. <code>2</code> and <code>1</code>), then re-upload the file — this page re-renders standings from it automatically.
-</footer>
-
 <script>
+// Which level each group sits on, and how many finishing positions
+// move up/down at the end of the season.
+const LEVELS = {
+  A:  { level: 0, up: 1, down: 2 },
+  B1: { level: 1, up: 1, down: 2 },
+  B2: { level: 1, up: 1, down: 2 },
+  C1: { level: 2, up: 2, down: 2 },
+  C2: { level: 2, up: 2, down: 2 },
+  C3: { level: 2, up: 2, down: 2 },
+  C4: { level: 2, up: 2, down: 2 },
+  D1: { level: 3, up: 2, down: 0 },
+  D2: { level: 3, up: 2, down: 0 },
+  D3: { level: 3, up: 2, down: 0 },
+};
+
+// Known destination groups for specific finishing positions, taken from
+// the promotion/relegation rules. Positions not listed here still get a
+// Promoted/Relegated tag, just without a named destination — the exact
+// pairing for the newly-added 2nd/4th places hasn't been fixed yet.
+const DESTINATIONS = {
+  "A-1": "King of the Hive",
+  "A-4": "B2", "A-5": "B1",
+  "B1-1": "A", "B2-1": "A",
+  "B1-4": "C3", "B2-4": "C4",
+  "B1-5": "C1", "B2-5": "C2",
+  "C1-1": "B2", "C2-1": "B1", "C3-1": "B2", "C4-1": "B1",
+  "C2-5": "D1", "C3-5": "D2", "C4-5": "D3",
+  "D1-1": "C3", "D2-1": "C4", "D3-1": "C1",
+};
+
 async function loadSeason() {
   const statusEl = document.getElementById("status");
   const board = document.getElementById("board");
@@ -318,46 +329,49 @@ async function loadSeason() {
     return;
   }
 
-  const { groups, matches, season } = data;
-  statusEl.textContent = "Season " + season + " · " + Object.keys(groups).length + " groups · " +
-    matches.length + " scheduled matches";
+  const { groups, season, format } = data;
+  statusEl.textContent = "Season " + season + " · " + Object.keys(groups).length +
+    " groups · " + (format || "round robin");
 
   board.innerHTML = "";
 
   for (const [groupName, players] of Object.entries(groups)) {
-    const groupMatches = matches.filter(m => m.group === groupName);
-    const standings = computeStandings(players, groupMatches);
-    board.appendChild(renderGroupCard(groupName, standings, groupMatches));
+    const standings = rankPlayers(players);
+    board.appendChild(renderGroupCard(groupName, standings));
   }
 }
 
-function computeStandings(players, groupMatches) {
-  const table = {};
-  players.forEach(p => {
-    table[p] = { name: p, played: 0, wins: 0, losses: 0, gamesFor: 0, gamesAgainst: 0 };
-  });
-
-  groupMatches.forEach(m => {
-    if (m.score1 === null || m.score2 === null || m.score1 === undefined || m.score2 === undefined) return;
-    const p1 = table[m.player1], p2 = table[m.player2];
-    if (!p1 || !p2) return;
-    p1.played++; p2.played++;
-    p1.gamesFor += m.score1; p1.gamesAgainst += m.score2;
-    p2.gamesFor += m.score2; p2.gamesAgainst += m.score1;
-    if (m.score1 > m.score2) { p1.wins++; p2.losses++; }
-    else if (m.score2 > m.score1) { p2.wins++; p1.losses++; }
-  });
-
-  return Object.values(table).sort((a, b) => {
-    if (b.wins !== a.wins) return b.wins - a.wins;
-    const diffA = a.gamesFor - a.gamesAgainst, diffB = b.gamesFor - b.gamesAgainst;
-    if (diffB !== diffA) return diffB - diffA;
-    if (b.gamesFor !== a.gamesFor) return b.gamesFor - a.gamesFor;
-    return a.name.localeCompare(b.name);
-  });
+function rankPlayers(players) {
+  return players
+    .map(p => ({ ...p, points: p.wins * 2 + p.draws }))
+    .sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      if (b.wins !== a.wins) return b.wins - a.wins;
+      return a.name.localeCompare(b.name);
+    });
 }
 
-function renderGroupCard(groupName, standings, groupMatches) {
+function tagFor(groupName, position, size) {
+  const cfg = LEVELS[groupName];
+  if (!cfg) return null;
+
+  if (position <= cfg.up) {
+    if (position === 1 && cfg.level === 0) {
+      return { cls: "king", label: "King of the Hive" };
+    }
+    const dest = DESTINATIONS[`${groupName}-${position}`];
+    return { cls: "promote", label: dest ? `Promoted → ${dest}` : "Promoted" };
+  }
+
+  if (position > size - cfg.down) {
+    const dest = DESTINATIONS[`${groupName}-${position}`];
+    return { cls: "relegate", label: dest ? `Relegated → ${dest}` : "Relegated" };
+  }
+
+  return null;
+}
+
+function renderGroupCard(groupName, standings) {
   const card = document.createElement("section");
   card.className = "group-card";
 
@@ -378,56 +392,36 @@ function renderGroupCard(groupName, standings, groupMatches) {
     <thead>
       <tr>
         <th>Player</th>
+        <th class="num">GP</th>
         <th class="num">W</th>
+        <th class="num">D</th>
         <th class="num">L</th>
-        <th class="num">Games</th>
+        <th class="num">Pts</th>
+        <th></th>
       </tr>
     </thead>
     <tbody></tbody>
   `;
   const tbody = table.querySelector("tbody");
   standings.forEach((s, i) => {
+    const position = i + 1;
+    const isLeader = anyPlayed && position === 1 && s.points > 0;
+    const tag = anyPlayed ? tagFor(groupName, position, standings.length) : null;
+
     const tr = document.createElement("tr");
-    if (s.played === 0) tr.className = "unplayed";
-    const isLeader = anyPlayed && i === 0 && s.wins > 0;
     tr.innerHTML = `
       <td><span class="player-row">${isLeader ? '<span class="queen-badge">Q</span>' : ''}${escapeHtml(s.name)}</span></td>
+      <td class="num">${s.played}</td>
       <td class="num">${s.wins}</td>
+      <td class="num">${s.draws}</td>
       <td class="num">${s.losses}</td>
-      <td class="num">${s.gamesFor}-${s.gamesAgainst}</td>
+      <td class="num">${s.points}</td>
+      <td>${tag ? `<span class="tag ${tag.cls}">${escapeHtml(tag.label)}</span>` : ''}</td>
     `;
     tbody.appendChild(tr);
   });
   card.appendChild(table);
 
-  const fixtures = document.createElement("div");
-  fixtures.className = "fixtures";
-  const fixturesTitle = document.createElement("h4");
-  fixturesTitle.textContent = "Fixtures";
-  fixtures.appendChild(fixturesTitle);
-
-  groupMatches.forEach(m => {
-    const row = document.createElement("div");
-    row.className = "fixture-row";
-    const played = m.score1 !== null && m.score2 !== null && m.score1 !== undefined && m.score2 !== undefined;
-
-    const p1Winner = played && m.score1 > m.score2;
-    const p2Winner = played && m.score2 > m.score1;
-
-    row.innerHTML = `
-      <span class="fixture-names">
-        <span class="${p1Winner ? 'winner' : ''}">${escapeHtml(m.player1)}</span>
-        <span style="color:var(--ink-soft)"> vs </span>
-        <span class="${p2Winner ? 'winner' : ''}">${escapeHtml(m.player2)}</span>
-      </span>
-      <span class="fixture-score ${played ? '' : 'pending'}">
-        ${played ? m.score1 + '–' + m.score2 : 'not played'}
-      </span>
-    `;
-    fixtures.appendChild(row);
-  });
-
-  card.appendChild(fixtures);
   return card;
 }
 
