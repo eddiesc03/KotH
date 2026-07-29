@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King of the Hive — July 2026</title>
+<style>
+  :root{
+    --bg: #EDE6D8;
+    --bg-alt: #E3DAC7;
+    --ink: #201F1D;
+    --ink-soft: #55504A;
+    --ivory: #FAF6EC;
+    --gold: #C99A2E;
+    --gold-soft: #E8CE8E;
+    --brown: #6B4226;
+    --line: #d8cdb4;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    line-height: 1.4;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    position: relative;
+    padding: 64px 24px 48px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(201,154,46,0.12), transparent 45%),
+      var(--bg-alt);
+    border-bottom: 3px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .hex-field {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(60deg, var(--line) 0 1px, transparent 1px 62px),
+      repeating-linear-gradient(-60deg, var(--line) 0 1px, transparent 1px 62px),
+      repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 107px);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 14px;
+  }
+
+  .eyebrow .hex-dot {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  h1 {
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.02;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  h1 .of { color: var(--brown); }
+  h1 .hive { color: var(--gold); }
+
+  .hero-sub {
+    max-width: 560px;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+
+  .legend {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+
+  /* ---------- Layout ---------- */
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+  }
+
+  /* ---------- Group card ---------- */
+  .group-card {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(32,31,29,0.03);
+  }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--ivory);
+  }
+
+  .group-badge {
+    width: 34px; height: 34px;
+    flex: none;
+    background: var(--gold);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .group-title {
+    font-family: "Archivo Black", "Arial Black", sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  .group-meta {
+    margin-left: auto;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--gold-soft);
+  }
+
+  /* ---------- Standings table ---------- */
+  table.standings {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+  }
+
+  table.standings th, table.standings td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+
+  table.standings th {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  table.standings td.num, table.standings th.num { text-align: right; }
+
+  .player-row { display: flex; align-items: center; gap: 6px; }
+
+  .queen-badge {
+    width: 16px; height: 16px;
+    flex: none;
+    background: var(--gold);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    color: var(--ink);
+  }
+
+  tr.unplayed td { color: var(--ink-soft); font-style: italic; }
+
+  /* ---------- Fixtures ---------- */
+  .fixtures {
+    padding: 14px 18px 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .fixtures h4 {
+    margin: 0 0 10px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .fixture-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13.5px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .fixture-row:last-child { border-bottom: none; }
+
+  .fixture-names { flex: 1; min-width: 0; }
+  .fixture-names .winner { font-weight: 700; }
+
+  .fixture-score {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+
+  .fixture-score.pending {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  footer code {
+    background: var(--bg-alt);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .status-banner {
+    max-width: 1180px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--brown);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brown);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hex-field"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="hex-dot"></span> Group stage · Season 2026-07</div>
+    <h1>King <span class="of">of the</span> <span class="hive">Hive</span></h1>
+    <p class="hero-sub">Ten groups, one round-robin each. Surround the queen, take the match — standings update automatically as results come in.</p>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--gold)"></span> Group leader</span>
+      <span><span class="swatch" style="background:var(--ivory);border:1px solid var(--line)"></span> Played</span>
+      <span><span class="swatch" style="background:var(--bg-alt);border:1px solid var(--line)"></span> Pending</span>
+    </div>
+  </div>
+</header>
+
+<div class="status-banner" id="status">Loading groups…</div>
+
+<main>
+  <div class="board" id="board"></div>
+</main>
+
+<footer>
+  Results are read from <code>2026-07.json</code>. To record a match, edit that file's
+  <code>matches</code> array and set <code>score1</code> / <code>score2</code> to the games each player won
+  (e.g. <code>2</code> and <code>1</code>), then re-upload the file — this page re-renders standings from it automatically.
+</footer>
+
+<script>
+async function loadSeason() {
+  const statusEl = document.getElementById("status");
+  const board = document.getElementById("board");
+  let data;
+  try {
+    data = await fetch("./2026-07.json").then(r => {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  } catch (err) {
+    statusEl.textContent = "Couldn't load 2026-07.json (" + err.message + "). Make sure it sits next to this page.";
+    return;
+  }
+
+  const { groups, matches, season } = data;
+  statusEl.textContent = "Season " + season + " · " + Object.keys(groups).length + " groups · " +
+    matches.length + " scheduled matches";
+
+  board.innerHTML = "";
+
+  for (const [groupName, players] of Object.entries(groups)) {
+    const groupMatches = matches.filter(m => m.group === groupName);
+    const standings = computeStandings(players, groupMatches);
+    board.appendChild(renderGroupCard(groupName, standings, groupMatches));
+  }
+}
+
+function computeStandings(players, groupMatches) {
+  const table = {};
+  players.forEach(p => {
+    table[p] = { name: p, played: 0, wins: 0, losses: 0, gamesFor: 0, gamesAgainst: 0 };
+  });
+
+  groupMatches.forEach(m => {
+    if (m.score1 === null || m.score2 === null || m.score1 === undefined || m.score2 === undefined) return;
+    const p1 = table[m.player1], p2 = table[m.player2];
+    if (!p1 || !p2) return;
+    p1.played++; p2.played++;
+    p1.gamesFor += m.score1; p1.gamesAgainst += m.score2;
+    p2.gamesFor += m.score2; p2.gamesAgainst += m.score1;
+    if (m.score1 > m.score2) { p1.wins++; p2.losses++; }
+    else if (m.score2 > m.score1) { p2.wins++; p1.losses++; }
+  });
+
+  return Object.values(table).sort((a, b) => {
+    if (b.wins !== a.wins) return b.wins - a.wins;
+    const diffA = a.gamesFor - a.gamesAgainst, diffB = b.gamesFor - b.gamesAgainst;
+    if (diffB !== diffA) return diffB - diffA;
+    if (b.gamesFor !== a.gamesFor) return b.gamesFor - a.gamesFor;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function renderGroupCard(groupName, standings, groupMatches) {
+  const card = document.createElement("section");
+  card.className = "group-card";
+
+  const anyPlayed = standings.some(s => s.played > 0);
+
+  const head = document.createElement("div");
+  head.className = "group-head";
+  head.innerHTML = `
+    <span class="group-badge">${escapeHtml(groupName)}</span>
+    <span class="group-title">Group ${escapeHtml(groupName)}</span>
+    <span class="group-meta">${standings.length} players</span>
+  `;
+  card.appendChild(head);
+
+  const table = document.createElement("table");
+  table.className = "standings";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th class="num">W</th>
+        <th class="num">L</th>
+        <th class="num">Games</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  `;
+  const tbody = table.querySelector("tbody");
+  standings.forEach((s, i) => {
+    const tr = document.createElement("tr");
+    if (s.played === 0) tr.className = "unplayed";
+    const isLeader = anyPlayed && i === 0 && s.wins > 0;
+    tr.innerHTML = `
+      <td><span class="player-row">${isLeader ? '<span class="queen-badge">Q</span>' : ''}${escapeHtml(s.name)}</span></td>
+      <td class="num">${s.wins}</td>
+      <td class="num">${s.losses}</td>
+      <td class="num">${s.gamesFor}-${s.gamesAgainst}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  card.appendChild(table);
+
+  const fixtures = document.createElement("div");
+  fixtures.className = "fixtures";
+  const fixturesTitle = document.createElement("h4");
+  fixturesTitle.textContent = "Fixtures";
+  fixtures.appendChild(fixturesTitle);
+
+  groupMatches.forEach(m => {
+    const row = document.createElement("div");
+    row.className = "fixture-row";
+    const played = m.score1 !== null && m.score2 !== null && m.score1 !== undefined && m.score2 !== undefined;
+
+    const p1Winner = played && m.score1 > m.score2;
+    const p2Winner = played && m.score2 > m.score1;
+
+    row.innerHTML = `
+      <span class="fixture-names">
+        <span class="${p1Winner ? 'winner' : ''}">${escapeHtml(m.player1)}</span>
+        <span style="color:var(--ink-soft)"> vs </span>
+        <span class="${p2Winner ? 'winner' : ''}">${escapeHtml(m.player2)}</span>
+      </span>
+      <span class="fixture-score ${played ? '' : 'pending'}">
+        ${played ? m.score1 + '–' + m.score2 : 'not played'}
+      </span>
+    `;
+    fixtures.appendChild(row);
+  });
+
+  card.appendChild(fixtures);
+  return card;
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+loadSeason();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+{
+  "season": "2026-07",
+  "groups": {
+    "A": [
+      "Cavaliers16",
+      "3nasty",
+      "Myrmigi",
+      "rizeagain",
+      "KES"
+    ],
+    "B1": [
+      "RoXar",
+      "antoinelr",
+      "Jewdoka",
+      "FifthBeetle",
+      "RiccDawg"
+    ],
+    "B2": [
+      "Kaur50",
+      "hive2",
+      "Czege",
+      "veme",
+      "csigeee"
+    ],
+    "C1": [
+      "HiveSpider",
+      "eSedano",
+      "dodger",
+      "shturik",
+      "Bee-ryce"
+    ],
+    "C2": [
+      "Frasco",
+      "mangouste",
+      "radru",
+      "max_shark",
+      "LeDoryphore"
+    ],
+    "C3": [
+      "Yeku",
+      "Grajjio",
+      "DimerHunton",
+      "eddiesc03",
+      "circustumbler"
+    ],
+    "C4": [
+      "Nicolai",
+      "andreuenc",
+      "pcapella",
+      "I_am_a_Shark",
+      "Bunjaboy"
+    ],
+    "D1": [
+      "xDESCAx",
+      "Roman575",
+      "dextramos",
+      "boroczb",
+      "cpd-spider"
+    ],
+    "D2": [
+      "Marchewka",
+      "neighlles",
+      "royalit",
+      "colmenaro"
+    ],
+    "D3": [
+      "mawel",
+      "thellwar",
+      "Sharpy29",
+      "MartinusTheCat"
+    ]
+  },
+  "matches": [
+    {
+      "group": "A",
+      "player1": "Cavaliers16",
+      "player2": "3nasty",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "Cavaliers16",
+      "player2": "Myrmigi",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "Cavaliers16",
+      "player2": "rizeagain",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "Cavaliers16",
+      "player2": "KES",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "3nasty",
+      "player2": "Myrmigi",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "3nasty",
+      "player2": "rizeagain",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "3nasty",
+      "player2": "KES",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "Myrmigi",
+      "player2": "rizeagain",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "Myrmigi",
+      "player2": "KES",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "A",
+      "player1": "rizeagain",
+      "player2": "KES",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "RoXar",
+      "player2": "antoinelr",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "RoXar",
+      "player2": "Jewdoka",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "RoXar",
+      "player2": "FifthBeetle",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "RoXar",
+      "player2": "RiccDawg",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "antoinelr",
+      "player2": "Jewdoka",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "antoinelr",
+      "player2": "FifthBeetle",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "antoinelr",
+      "player2": "RiccDawg",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "Jewdoka",
+      "player2": "FifthBeetle",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "Jewdoka",
+      "player2": "RiccDawg",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B1",
+      "player1": "FifthBeetle",
+      "player2": "RiccDawg",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Kaur50",
+      "player2": "hive2",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Kaur50",
+      "player2": "Czege",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Kaur50",
+      "player2": "veme",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Kaur50",
+      "player2": "csigeee",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "hive2",
+      "player2": "Czege",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "hive2",
+      "player2": "veme",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "hive2",
+      "player2": "csigeee",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Czege",
+      "player2": "veme",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "Czege",
+      "player2": "csigeee",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "B2",
+      "player1": "veme",
+      "player2": "csigeee",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "HiveSpider",
+      "player2": "eSedano",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "HiveSpider",
+      "player2": "dodger",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "HiveSpider",
+      "player2": "shturik",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "HiveSpider",
+      "player2": "Bee-ryce",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "eSedano",
+      "player2": "dodger",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "eSedano",
+      "player2": "shturik",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "eSedano",
+      "player2": "Bee-ryce",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "dodger",
+      "player2": "shturik",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "dodger",
+      "player2": "Bee-ryce",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C1",
+      "player1": "shturik",
+      "player2": "Bee-ryce",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "Frasco",
+      "player2": "mangouste",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "Frasco",
+      "player2": "radru",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "Frasco",
+      "player2": "max_shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "Frasco",
+      "player2": "LeDoryphore",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "mangouste",
+      "player2": "radru",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "mangouste",
+      "player2": "max_shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "mangouste",
+      "player2": "LeDoryphore",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "radru",
+      "player2": "max_shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "radru",
+      "player2": "LeDoryphore",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C2",
+      "player1": "max_shark",
+      "player2": "LeDoryphore",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Yeku",
+      "player2": "Grajjio",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Yeku",
+      "player2": "DimerHunton",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Yeku",
+      "player2": "eddiesc03",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Yeku",
+      "player2": "circustumbler",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Grajjio",
+      "player2": "DimerHunton",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Grajjio",
+      "player2": "eddiesc03",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "Grajjio",
+      "player2": "circustumbler",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "DimerHunton",
+      "player2": "eddiesc03",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "DimerHunton",
+      "player2": "circustumbler",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C3",
+      "player1": "eddiesc03",
+      "player2": "circustumbler",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "Nicolai",
+      "player2": "andreuenc",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "Nicolai",
+      "player2": "pcapella",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "Nicolai",
+      "player2": "I_am_a_Shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "Nicolai",
+      "player2": "Bunjaboy",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "andreuenc",
+      "player2": "pcapella",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "andreuenc",
+      "player2": "I_am_a_Shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "andreuenc",
+      "player2": "Bunjaboy",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "pcapella",
+      "player2": "I_am_a_Shark",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "pcapella",
+      "player2": "Bunjaboy",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "C4",
+      "player1": "I_am_a_Shark",
+      "player2": "Bunjaboy",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "xDESCAx",
+      "player2": "Roman575",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "xDESCAx",
+      "player2": "dextramos",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "xDESCAx",
+      "player2": "boroczb",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "xDESCAx",
+      "player2": "cpd-spider",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "Roman575",
+      "player2": "dextramos",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "Roman575",
+      "player2": "boroczb",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "Roman575",
+      "player2": "cpd-spider",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "dextramos",
+      "player2": "boroczb",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "dextramos",
+      "player2": "cpd-spider",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D1",
+      "player1": "boroczb",
+      "player2": "cpd-spider",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "Marchewka",
+      "player2": "neighlles",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "Marchewka",
+      "player2": "royalit",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "Marchewka",
+      "player2": "colmenaro",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "neighlles",
+      "player2": "royalit",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "neighlles",
+      "player2": "colmenaro",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D2",
+      "player1": "royalit",
+      "player2": "colmenaro",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "mawel",
+      "player2": "thellwar",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "mawel",
+      "player2": "Sharpy29",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "mawel",
+      "player2": "MartinusTheCat",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "thellwar",
+      "player2": "Sharpy29",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "thellwar",
+      "player2": "MartinusTheCat",
+      "score1": null,
+      "score2": null
+    },
+    {
+      "group": "D3",
+      "player1": "Sharpy29",
+      "player2": "MartinusTheCat",
+      "score1": null,
+      "score2": null
+    }
+  ]
+}
