@@ -444,12 +444,15 @@ async function loadSeason(seasonId) {
     " groups" + (isArchive ? " · archived" : " · " + (data.format || "round robin"));
 
   for (const [groupName, players] of Object.entries(groups)) {
+    board.appendChild(renderArchiveGroupCard(groupName, players));
+    /*
     if (isArchive) {
       board.appendChild(renderArchiveGroupCard(groupName, players));
     } else {
       const standings = rankPlayers(players);
       board.appendChild(renderLiveGroupCard(groupName, standings));
     }
+    */
   }
 }
 
