@@ -540,7 +540,7 @@ function renderLiveGroupCard(groupName, standings) {
 // ---------------------------------------------------------------------
 function nextTag(next) {
   if (!next) return null;
-  if (next === "👑") return { cls: "king", label: "👑 King of the Hive" };
+  if (next === "👑") return { cls: "king", label: "👑" };
   if (next === "TBD") return { cls: "tbd", label: "TBD" };
   if (next.startsWith("🔼")) return { cls: "promote", label: "▲ " + next.slice(2) };
   if (next.startsWith("🔽")) return { cls: "relegate", label: "▼ " + next.slice(2) };
