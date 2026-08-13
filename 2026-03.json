@@ -1,0 +1,64 @@
+{
+  "season": "2026-03",
+  "label": "March 2026",
+  "status": "final",
+  "groups": {
+    "A": [
+      { "name": "Cavaliers16", "pts": 7.0, "gp": 8, "sb": 19.5,  "wb": 3, "elo": 1859.5, "next": "👑" },
+      { "name": "rizeagain",   "pts": 6.5, "gp": 8, "sb": 19.25, "wb": 2, "elo": 1845.0, "next": "A" },
+      { "name": "csigeee",     "pts": 4.0, "gp": 8, "sb": 5.0,   "wb": 2, "elo": 1867.9, "next": "A" },
+      { "name": "Czege",       "pts": 1.5, "gp": 8, "sb": 4.25,  "wb": 1, "elo": 1703.3, "next": "🔽B2" },
+      { "name": "Jewdoka",     "pts": 1.0, "gp": 8, "sb": 1.5,   "wb": 1, "elo": 1700.8, "next": "🔽B1" }
+    ],
+    "B1": [
+      { "name": "stepanzo",  "pts": 5.5, "gp": 8, "sb": 17.75, "wb": 2, "elo": 1721.9, "next": "🔼A" },
+      { "name": "veme",      "pts": 5.0, "gp": 8, "sb": 16.0,  "wb": 2, "elo": 1695.4, "next": "B1" },
+      { "name": "max_shark", "pts": 4.5, "gp": 8, "sb": 16.75, "wb": 1, "elo": 1642.7, "next": "B2" },
+      { "name": "hive2",     "pts": 4.0, "gp": 8, "sb": 12.5,  "wb": 1, "elo": 1676.6, "next": "🔽C3" },
+      { "name": "Kaur50",    "pts": 1.0, "gp": 8, "sb": 4.5,   "wb": 0, "elo": 1565.3, "next": "🔽C1" }
+    ],
+    "B2": [
+      { "name": "KES",        "pts": 7.0, "gp": 8, "sb": 21.5,  "wb": 3, "elo": 1750.8, "next": "🔼A" },
+      { "name": "Myrmigi",    "pts": 4.5, "gp": 8, "sb": 14.75, "wb": 2, "elo": 1648.3, "next": "B2" },
+      { "name": "3nasty",     "pts": 4.0, "gp": 8, "sb": 13.5,  "wb": 3, "elo": 1680.9, "next": "B1" },
+      { "name": "antoinelr",  "pts": 2.5, "gp": 8, "sb": 8.25,  "wb": 1, "elo": 1612.1, "next": "🔽C4" },
+      { "name": "mangouste",  "pts": 2.0, "gp": 8, "sb": 6.5,   "wb": 1, "elo": 1573.5, "next": "🔽C2" }
+    ],
+    "C1": [
+      { "name": "I_am_a_Shark", "pts": 5.0, "gp": 6, "sb": 9.0, "wb": 2, "elo": 1617.5, "next": "🔼B2" },
+      { "name": "pcapella",     "pts": 5.0, "gp": 6, "sb": 9.0, "wb": 2, "elo": 1593.2, "next": "C1" },
+      { "name": "Nicolai",      "pts": 1.0, "gp": 6, "sb": 1.0, "wb": 1, "elo": 1465.7, "next": "C2" },
+      { "name": "darneas",      "pts": 1.0, "gp": 6, "sb": 1.0, "wb": 1, "elo": 1349.3, "next": "C3" }
+    ],
+    "C2": [
+      { "name": "eSedano",     "pts": 5.5, "gp": 8, "sb": 19.75, "wb": 2, "elo": 1518.7, "next": "🔼B1" },
+      { "name": "RoXar",       "pts": 5.0, "gp": 8, "sb": 17.0,  "wb": 3, "elo": 1533.2, "next": "C2" },
+      { "name": "dodger",      "pts": 4.5, "gp": 8, "sb": 14.75, "wb": 1, "elo": 1466.9, "next": "C3" },
+      { "name": "shturik",     "pts": 3.0, "gp": 8, "sb": 11.5,  "wb": 2, "elo": 1490.4, "next": "C4" },
+      { "name": "LeDoryphore", "pts": 2.0, "gp": 8, "sb": 8.5,   "wb": 1, "elo": 1498.1, "next": "🔽D" }
+    ],
+    "C3": [
+      { "name": "FifthBeetle", "pts": 7.0, "gp": 8, "sb": 21.0, "wb": 4, "elo": 1588.9, "next": "🔼B2" },
+      { "name": "RiccDawg",    "pts": 5.0, "gp": 8, "sb": 15.0, "wb": 2, "elo": 1594.4, "next": "C3" },
+      { "name": "ringersoll",  "pts": 5.0, "gp": 8, "sb": 11.0, "wb": 2, "elo": 1594.2, "next": "C4" },
+      { "name": "Yeku",        "pts": 3.0, "gp": 8, "sb": 5.0,  "wb": 1, "elo": 1514.5, "next": "C1" },
+      { "name": "HiveSpider",  "pts": 0.0, "gp": 8, "sb": 0.0,  "wb": 0, "elo": 1451.5, "next": "🔽D" }
+    ],
+    "C4": [
+      { "name": "pandoraul",   "pts": 7.0, "gp": 8, "sb": 21.0, "wb": 3, "elo": 1616.9, "next": "🔼B1" },
+      { "name": "radru",       "pts": 5.0, "gp": 8, "sb": 16.0, "wb": 2, "elo": 1533.9, "next": "C4" },
+      { "name": "Frasco",      "pts": 4.0, "gp": 8, "sb": 12.0, "wb": 1, "elo": 1536.9, "next": "C1" },
+      { "name": "Grajjio",     "pts": 3.0, "gp": 8, "sb": 7.0,  "wb": 2, "elo": 1455.8, "next": "C2" },
+      { "name": "DimerHunton", "pts": 1.0, "gp": 8, "sb": 4.0,  "wb": 0, "elo": 1407.8, "next": "🔽D" }
+    ],
+    "D1": [
+      { "name": "andreuenc",     "pts": 3.0, "gp": 4, "sb": 4.0, "wb": 1, "elo": 1529.9, "next": "🔼C" },
+      { "name": "mawel",         "pts": 2.0, "gp": 4, "sb": 4.0, "wb": 0, "elo": 1498.2, "next": "🔼C" },
+      { "name": "Trofiealtonno", "pts": 1.0, "gp": 4, "sb": 2.0, "wb": 0, "elo": 1471.9, "next": "TBD" }
+    ],
+    "D2": [
+      { "name": "JulesvH", "pts": 1.0, "gp": 2, "sb": 1.0, "wb": 1, "elo": 1501.3, "next": "🔼C" },
+      { "name": "xDESCAx", "pts": 1.0, "gp": 2, "sb": 1.0, "wb": 1, "elo": 1498.7, "next": "🔼C" }
+    ]
+  }
+}
