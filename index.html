@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>King of the Hive — July 2026</title>
+<title>King of the Hive</title>
 <style>
   :root{
     --bg: #EDE6D8;
@@ -18,6 +18,8 @@
     --promote-soft: #DCE9E1;
     --relegate: #9C4B3A;
     --relegate-soft: #F0DCD6;
+    --tbd: #7A7469;
+    --tbd-soft: #E6E0D2;
     --line: #d8cdb4;
     --radius: 10px;
   }
@@ -105,6 +107,47 @@
     border-radius: 2px;
     display: inline-block;
   }
+
+  /* ---------- Season switcher ---------- */
+  .season-switcher {
+    max-width: 1180px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .season-tab {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    background: var(--ivory);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .season-tab:hover { border-color: var(--gold); color: var(--ink); }
+
+  .season-tab.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--ivory);
+  }
+
+  .season-tab .archive-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--tbd);
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .season-tab.active .archive-dot { background: var(--gold); }
 
   /* ---------- Layout ---------- */
   main {
@@ -236,6 +279,8 @@
   .tag.promote { background: var(--promote-soft); color: var(--promote); }
   .tag.relegate { background: var(--relegate-soft); color: var(--relegate); }
   .tag.king { background: var(--gold-soft); color: var(--brown); }
+  .tag.tbd { background: var(--tbd-soft); color: var(--tbd); }
+  .tag.stay { background: transparent; color: var(--ink-soft); padding-left: 0; }
 
   /* ---------- Status ---------- */
   .status-banner {
@@ -258,7 +303,7 @@
 <header class="hero">
   <div class="hex-field"></div>
   <div class="hero-inner">
-    <div class="eyebrow"><span class="hex-dot"></span> Season 2026-07</div>
+    <div class="eyebrow"><span class="hex-dot"></span> <span id="eyebrow-season">Season</span></div>
     <h1>King <span class="of">of the</span> <span class="hive">Hive</span></h1>
     <div class="legend">
       <span><span class="swatch" style="background:var(--gold)"></span> Group leader</span>
@@ -267,6 +312,8 @@
     </div>
   </div>
 </header>
+
+<nav class="season-switcher" id="season-switcher" aria-label="Season"></nav>
 
 <div class="status-banner" id="status">Loading groups…</div>
 
@@ -285,8 +332,21 @@
 </main>
 
 <script>
+// ---------------------------------------------------------------------
+// Season registry
+// ---------------------------------------------------------------------
+// Falls back to this list if seasons.json can't be fetched (e.g. when
+// the page is opened straight from disk with file://, where fetch of
+// local JSON is often blocked by the browser).
+const FALLBACK_SEASONS = [
+  { id: "2026-07", label: "July 2026", file: "2026-07.json", type: "live" },
+  { id: "2026-06", label: "June 2026", file: "2026-06.json", type: "archive" },
+];
+
 // Which level each group sits on, and how many finishing positions
-// move up/down at the end of the season.
+// move up/down at the end of the season. Used for the *live* season,
+// where standings are computed on the fly and don't come with their
+// own "Next" destination yet.
 const LEVELS = {
   A:  { level: 0, up: 1, down: 2 },
   B1: { level: 1, up: 1, down: 2 },
@@ -315,32 +375,87 @@ const DESTINATIONS = {
   "D1-1": "C3", "D2-1": "C4", "D3-1": "C1",
 };
 
-async function loadSeason() {
+let seasons = FALLBACK_SEASONS;
+let currentSeasonId = null;
+
+async function init() {
+  try {
+    const res = await fetch("./seasons.json");
+    if (res.ok) seasons = await res.json();
+  } catch (err) {
+    // Fall back silently to FALLBACK_SEASONS.
+  }
+
+  renderSeasonSwitcher();
+
+  const defaultSeason = seasons.find(s => s.type === "live") || seasons[0];
+  await loadSeason(defaultSeason.id);
+}
+
+function renderSeasonSwitcher() {
+  const nav = document.getElementById("season-switcher");
+  nav.innerHTML = "";
+  seasons.forEach(s => {
+    const btn = document.createElement("button");
+    btn.className = "season-tab";
+    btn.dataset.seasonId = s.id;
+    btn.innerHTML = `<span class="archive-dot"></span>${escapeHtml(s.label || s.id)}`;
+    btn.addEventListener("click", () => loadSeason(s.id));
+    nav.appendChild(btn);
+  });
+}
+
+function markActiveTab() {
+  document.querySelectorAll(".season-tab").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.seasonId === currentSeasonId);
+  });
+}
+
+async function loadSeason(seasonId) {
+  const meta = seasons.find(s => s.id === seasonId);
+  if (!meta) return;
+
+  currentSeasonId = seasonId;
+  markActiveTab();
+
   const statusEl = document.getElementById("status");
   const board = document.getElementById("board");
+  const eyebrow = document.getElementById("eyebrow-season");
+
+  statusEl.textContent = "Loading groups…";
+  board.innerHTML = "";
+
   let data;
   try {
-    data = await fetch("./2026-07.json").then(r => {
+    data = await fetch("./" + meta.file).then(r => {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
     });
   } catch (err) {
-    statusEl.textContent = "Couldn't load 2026-07.json (" + err.message + "). Make sure it sits next to this page.";
+    statusEl.textContent = "Couldn't load " + meta.file + " (" + err.message + "). Make sure it sits next to this page.";
     return;
   }
 
-  const { groups, season, format } = data;
-  statusEl.textContent = "Season " + season + " · " + Object.keys(groups).length +
-    " groups · " + (format || "round robin");
+  const { groups, season } = data;
+  const isArchive = meta.type === "archive" || data.status === "final";
 
-  board.innerHTML = "";
+  eyebrow.textContent = "Season " + (season || meta.id) + (isArchive ? " · final" : "");
+  statusEl.textContent = "Season " + (season || meta.id) + " · " + Object.keys(groups).length +
+    " groups" + (isArchive ? " · archived" : " · " + (data.format || "round robin"));
 
   for (const [groupName, players] of Object.entries(groups)) {
-    const standings = rankPlayers(players);
-    board.appendChild(renderGroupCard(groupName, standings));
+    if (isArchive) {
+      board.appendChild(renderArchiveGroupCard(groupName, players));
+    } else {
+      const standings = rankPlayers(players);
+      board.appendChild(renderLiveGroupCard(groupName, standings));
+    }
   }
 }
 
+// ---------------------------------------------------------------------
+// Live season (in progress, standings computed from W/D/L records)
+// ---------------------------------------------------------------------
 function rankPlayers(players) {
   return players
     .map(p => ({ ...p, points: p.wins * 2 + p.draws }))
@@ -371,20 +486,13 @@ function tagFor(groupName, position, size) {
   return null;
 }
 
-function renderGroupCard(groupName, standings) {
+function renderLiveGroupCard(groupName, standings) {
   const card = document.createElement("section");
   card.className = "group-card";
 
   const anyPlayed = standings.some(s => s.played > 0);
 
-  const head = document.createElement("div");
-  head.className = "group-head";
-  head.innerHTML = `
-    <span class="group-badge">${escapeHtml(groupName)}</span>
-    <span class="group-title">Group ${escapeHtml(groupName)}</span>
-    <span class="group-meta">${standings.length} players</span>
-  `;
-  card.appendChild(head);
+  card.appendChild(groupHead(groupName, standings.length));
 
   const table = document.createElement("table");
   table.className = "standings";
@@ -425,13 +533,91 @@ function renderGroupCard(groupName, standings) {
   return card;
 }
 
+// ---------------------------------------------------------------------
+// Archived season (final standings, already ranked, with SB/WB
+// tiebreaks, ELO, and a "Next" column telling you where each player
+// went the following season)
+// ---------------------------------------------------------------------
+function nextTag(next) {
+  if (!next) return null;
+  if (next === "👑") return { cls: "king", label: "👑 King of the Hive" };
+  if (next === "TBD") return { cls: "tbd", label: "TBD" };
+  if (next.startsWith("🔼")) return { cls: "promote", label: "▲ " + next.slice(2) };
+  if (next.startsWith("🔽")) return { cls: "relegate", label: "▼ " + next.slice(2) };
+  return { cls: "stay", label: next };
+}
+
+function renderArchiveGroupCard(groupName, players) {
+  const card = document.createElement("section");
+  card.className = "group-card";
+
+  card.appendChild(groupHead(groupName, players.length));
+
+  const table = document.createElement("table");
+  table.className = "standings";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th class="num">Pts</th>
+        <th class="num">GP</th>
+        <th class="num">SB</th>
+        <th class="num">WB</th>
+        <th class="num">ELO</th>
+        <th>Next</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  `;
+  const tbody = table.querySelector("tbody");
+  players.forEach((p, i) => {
+    const position = i + 1;
+    const isLeader = position === 1;
+    const tag = nextTag(p.next);
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="player-row">${isLeader ? '<span class="queen-badge">Q</span>' : ''}${escapeHtml(p.name)}</span></td>
+      <td class="num">${formatNum(p.pts)}</td>
+      <td class="num">${p.gp}</td>
+      <td class="num">${formatNum(p.sb)}</td>
+      <td class="num">${p.wb}</td>
+      <td class="num">${formatNum(p.elo, 1)}</td>
+      <td>${tag ? `<span class="tag ${tag.cls}">${escapeHtml(tag.label)}</span>` : ''}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  card.appendChild(table);
+
+  return card;
+}
+
+function formatNum(n) {
+  if (typeof n !== "number") return n;
+  return Number.isInteger(n) ? n.toFixed(1) : String(n);
+}
+
+// ---------------------------------------------------------------------
+// Shared helpers
+// ---------------------------------------------------------------------
+function groupHead(groupName, playerCount) {
+  const head = document.createElement("div");
+  head.className = "group-head";
+  head.innerHTML = `
+    <span class="group-badge">${escapeHtml(groupName)}</span>
+    <span class="group-title">Group ${escapeHtml(groupName)}</span>
+    <span class="group-meta">${playerCount} players</span>
+  `;
+  return head;
+}
+
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, c => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[c]));
 }
 
-loadSeason();
+init();
 </script>
 
 </body>
