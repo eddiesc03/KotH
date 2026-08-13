@@ -284,7 +284,7 @@
 
   /* ---------- Status ---------- */
   .status-banner {
-    max-width: 1180px;
+    /* max-width: 1180px; */
     margin: 20px auto 0;
     padding: 0 24px;
     font-family: "IBM Plex Mono", monospace;
@@ -563,7 +563,6 @@ function renderArchiveGroupCard(groupName, players) {
         <th class="num">GP</th>
         <th class="num">SB</th>
         <th class="num">WB</th>
-        <th class="num">ELO</th>
         <th>Next</th>
       </tr>
     </thead>
@@ -582,7 +581,6 @@ function renderArchiveGroupCard(groupName, players) {
       <td class="num">${p.gp}</td>
       <td class="num">${formatNum(p.sb)}</td>
       <td class="num">${p.wb}</td>
-      <td class="num">${formatNum(p.elo, 1)}</td>
       <td>${tag ? `<span class="tag ${tag.cls}">${escapeHtml(tag.label)}</span>` : ''}</td>
     `;
     tbody.appendChild(tr);
