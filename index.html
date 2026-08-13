@@ -110,7 +110,8 @@
 
   /* ---------- Season switcher ---------- */
   .season-switcher {
-    max-width: 1180px;
+    /* max-width: 1180px; */
+  
     margin: 28px auto 0;
     padding: 0 24px;
     display: flex;
@@ -151,7 +152,7 @@
 
   /* ---------- Layout ---------- */
   main {
-    max-width: 1180px;
+   /* max-width: 1180px; */
     margin: 0 auto;
     padding: 40px 24px 80px;
   }
@@ -445,14 +446,6 @@ async function loadSeason(seasonId) {
 
   for (const [groupName, players] of Object.entries(groups)) {
     board.appendChild(renderArchiveGroupCard(groupName, players));
-    /*
-    if (isArchive) {
-      board.appendChild(renderArchiveGroupCard(groupName, players));
-    } else {
-      const standings = rankPlayers(players);
-      board.appendChild(renderLiveGroupCard(groupName, standings));
-    }
-    */
   }
 }
 
@@ -487,53 +480,6 @@ function tagFor(groupName, position, size) {
   }
 
   return null;
-}
-
-function renderLiveGroupCard(groupName, standings) {
-  const card = document.createElement("section");
-  card.className = "group-card";
-
-  const anyPlayed = standings.some(s => s.played > 0);
-
-  card.appendChild(groupHead(groupName, standings.length));
-
-  const table = document.createElement("table");
-  table.className = "standings";
-  table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Player</th>
-        <th class="num">GP</th>
-        <th class="num">W</th>
-        <th class="num">D</th>
-        <th class="num">L</th>
-        <th class="num">Pts</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `;
-  const tbody = table.querySelector("tbody");
-  standings.forEach((s, i) => {
-    const position = i + 1;
-    const isLeader = anyPlayed && position === 1 && s.points > 0;
-    const tag = anyPlayed ? tagFor(groupName, position, standings.length) : null;
-
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><span class="player-row">${isLeader ? '<span class="queen-badge">Q</span>' : ''}${escapeHtml(s.name)}</span></td>
-      <td class="num">${s.played}</td>
-      <td class="num">${s.wins}</td>
-      <td class="num">${s.draws}</td>
-      <td class="num">${s.losses}</td>
-      <td class="num">${s.points}</td>
-      <td>${tag ? `<span class="tag ${tag.cls}">${escapeHtml(tag.label)}</span>` : ''}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-  card.appendChild(table);
-
-  return card;
 }
 
 // ---------------------------------------------------------------------
