@@ -257,7 +257,7 @@
   table.standings td.num, table.standings th.num { text-align: right; }
 
   .player-row { display: flex; align-items: center; gap: 6px; }
-
+/*
   .queen-badge {
     width: 16px; height: 16px;
     flex: none;
@@ -267,7 +267,7 @@
     font-size: 9px;
     color: var(--ink);
   }
-
+*/
   .tag {
     display: inline-block;
     font-family: "IBM Plex Mono", monospace;
@@ -525,7 +525,7 @@ function renderArchiveGroupCard(groupName, players) {
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><span class="player-row">${isLeader ? '<span class="queen-badge">Q</span>' : ''}${escapeHtml(p.name)}</span></td>
+      <td><span class="player-row">${escapeHtml(p.name)}</span></td>
       <td class="num">${formatNum(p.pts)}</td>
       <td class="num">${p.gp}</td>
       <td class="num">${formatNum(p.sb)}</td>
